@@ -2,3 +2,5 @@ config/apikey
 config/apisecret
 config/apitoken
 config/tokensecret
+config/apikey
+config/apisecret
