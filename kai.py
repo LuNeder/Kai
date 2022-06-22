@@ -1,5 +1,6 @@
 import tweepy
 import os
+from textwrap import wrap
 
 consumer_key = open("config/apikey", "r").read().replace('\n','')
 consumer_secret = open("config/apisecret", "r").read().replace('\n','')
@@ -7,7 +8,6 @@ access_token = open("config/apitoken", "r").read().replace('\n','')
 access_token_secret = open("config/tokensecret", "r").read().replace('\n','')
 
 
-print(consumer_key)
 
 #login
 client = tweepy.Client(
@@ -17,6 +17,31 @@ client = tweepy.Client(
 
 
 
+file = open("tweet", "r").read()
+txtsize = len(file)
+
+fstpre = open("config/firstpre", "r").read()
+fstpresize = len(fstpre)
+
+pre = open("config/thpre", "r").read()
+presize = len(pre)
+
+post = open("config/thpost", "r").read()
+postsize = len(post)
+
+
+fstsize = 280 - fstpresize - postsize
+print(fstsize)
+
+tweetsize = 280 - presize - postsize
+print(tweetsize)
+
+
+
+fsttweet = wrap(file, fstsize)
+print(fsttweet)
+fsttweet = fsttweet[0]
+print(fsttweet)
 
 
 
