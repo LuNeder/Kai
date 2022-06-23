@@ -70,14 +70,14 @@ for i in range(twtnump):
 		if len(tweeti) > lastsize:
 			print("will split last tweet")
 			lasttweets = wrap(tweeti, lastsize)
-			for i in lasttweets:
+			for i in range(len(lasttweets)):
 				if i == len(lasttweets) - 1:
-					print("last twt now")
+					print("final last twt now")
 					tweeti = lasttweets[i]
 					twttxt = pre + tweeti + lastpost
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 				else:
-					print("lst twt part ? now")
+					print("lst twt part" + str(i) + "+1 now")
 					tweeti = lasttweets[i]
 					twttxt = pre + tweeti + post
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
