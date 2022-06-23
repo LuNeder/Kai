@@ -33,8 +33,8 @@ lastpost = open("config/lastpost", "r").read()
 lstpostsize = len(lastpost)
 
 
-fstsize = 280 - fstpresize - postsize
-print(fstsize)
+#fstsize = 280 - fstpresize - postsize
+#print(fstsize)
 
 tweetsize = 280 - presize - postsize
 print(tweetsize)
@@ -43,44 +43,55 @@ lastsize = 280 - presize - lstpostsize
 
 
 
-fsttweet = wrap(file, fstsize, break_on_hyphens=False) # drop_whitespace=False does not work. how do I allow words to be broken in half?
-print(fsttweet)
-fsttweet = fsttweet[0]
-print(fsttweet)
+#fsttweet = wrap(file, fstsize, break_on_hyphens=False) # drop_whitespace=False does not work. how do I allow words to be broken in half?
+#print(fsttweet)
+#fsttweet = fsttweet[0]
+#print(fsttweet)
 
 tweets = wrap(file, tweetsize, break_on_hyphens=False)
 twtnump = len(tweets)
+print(tweets)
 
 
-
-twttxt = fstpre + fsttweet + post
+#twttxt = fstpre + fsttweet + post
 
 for i in range(twtnump):
 	if i == 0:
-		twttxt = fstpre + fsttweet + post
+		print("1st tweet now")
+		tweeti = tweets[i]
+		#twttxt = fstpre + fsttweet + post
+		twttxt = tweeti + post
 		tweet =  client.create_tweet(text=twttxt)
-	elif i == len(tweets):
+		print("1st tweet done")
+	elif i == len(tweets) - 1:
+		print("last tweet now")
 		tweeti = tweets[i]
 		
 		if len(tweeti) > lastsize:
+			print("will split last tweet")
 			lasttweets = wrap(tweeti, lastsize)
 			for i in lasttweets:
-				if i == len(lasttweets):
+				if i == len(lasttweets) - 1:
+					print("last twt now")
 					tweeti = lasttweets[i]
 					twttxt = pre + tweeti + lastpost
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 				else:
+					print("lst twt part ? now")
 					tweeti = lasttweets[i]
 					twttxt = pre + tweeti + post
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 		else:
+			print("no need to split")
 			twttxt = pre + tweeti + lastpost
 			tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 	else:
+		print("tweet " + str(i) + "+1 now")
 		tweeti = tweets[i]
 		twttxt = pre + tweeti + post
 		tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+		print("tweet " + str(i) + "+1 done")
 
 
-tweet =  client.create_tweet(text="hello")
-tweet2 = client.create_tweet(text="hi", in_reply_to_tweet_id=tweet.data["id"])
+#tweet =  client.create_tweet(text="hello")
+#tweet2 = client.create_tweet(text="hi", in_reply_to_tweet_id=tweet.data["id"])
