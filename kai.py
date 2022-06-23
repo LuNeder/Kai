@@ -1,3 +1,6 @@
+# Copyright (c) Luana Neder 2022
+# Licensed under the Open Software License version 3.0
+
 import tweepy
 import os
 from textwrap import wrap
