@@ -84,19 +84,19 @@ for i in range(twtnump):
 		if len(tweeti) > lastsize:
 			print("will split last tweet")
 			lasttweets = wrap(tweeti, lastsize)
-			for i in range(len(lasttweets)):
-				if i == len(lasttweets) - 1:
+			for f in range(len(lasttweets)):
+				if f == len(lasttweets) - 1:
 					print("final last twt now")
-					tweeti = lasttweets[i]
-					prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
-					lastposti = lastpost.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
+					tweeti = lasttweets[f]
+					prei = pre.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
+					lastposti = lastpost.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
 					twttxt = prei + tweeti + lastposti
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 				else:
-					print("lst twt part " + str(i) + "+1 now")
-					tweeti = lasttweets[i]
-					prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
-					posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
+					print("lst twt part " + str(f) + "+1 now")
+					tweeti = lasttweets[f]
+					prei = pre.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
+					posti = post.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
 					twttxt = prei + tweeti + posti
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 		else:
