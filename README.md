@@ -31,7 +31,7 @@ The following variables can be added to the above files and will be automaticall
 - %TO: Total number of tweets on the thread
 
 # Limitations
-- A thread with 1000 tweets or more might not come out as expected if using %n and/or %F on layout
+- A thread with 1000 tweets or more might not come out as expected if using %nu and/or %TO on layout
 
 #
 Kai uses she/her pronouns
