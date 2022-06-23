@@ -38,7 +38,7 @@ print(tweetsize)
 
 
 
-fsttweet = wrap(file, fstsize)
+fsttweet = wrap(file, fstsize, break_on_hyphens=False) # drop_whitespace=False does not work. how do I allow words to be broken in half?
 print(fsttweet)
 fsttweet = fsttweet[0]
 print(fsttweet)
