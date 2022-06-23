@@ -48,10 +48,28 @@ print(fsttweet)
 fsttweet = fsttweet[0]
 print(fsttweet)
 
+tweets = wrap(file, tweetsize, break_on_hyphens=False)
+twtnump = len(tweets)
+
+
 
 twttxt = fstpre + fsttweet + post
 
-
+for i in range(twtnump):
+	if i = 0:
+		twttxt = fstpre + fsttweet + post
+		tweet =  client.create_tweet(text=twttxt)
+	elif i = len(tweets):
+		tweeti = tweets[i]
+		twttxt = pre + tweeti + lastpost
+		tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+	else:
+		tweeti = tweets[i]
+		
+		if len(tweeti) > lastsize:
+			
+		twttxt = pre + tweeti + lastpost
+		tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 
 
 tweet =  client.create_tweet(text="hello")
