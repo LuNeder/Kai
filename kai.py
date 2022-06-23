@@ -63,7 +63,7 @@ else:
 	print("last twt will not have to be split")
 	number = twtnump
 	
-print("there will be" + str(number) + "tweets")
+print("there will be " + str(number) + " tweets")
 
 
 #twttxt = fstpre + fsttweet + post
