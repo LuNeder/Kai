@@ -28,8 +28,9 @@ The following variables can be added to the above files and will be automaticall
 - %u: @username of who's tweeting (defined in configuration files)
 -->
 - %nu: Number of the current tweet on the thread
+  - %n can also be used, but only for threads with less than 100 tweets
 - %TO: Total number of tweets on the thread
-
+  - %T can also be used, but only for threads with less than 100 tweets
 # Limitations
 - A thread with 1000 tweets or more might not come out as expected if using %nu and/or %TO on layout
 
