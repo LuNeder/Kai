@@ -21,8 +21,10 @@ As an alternative, you could delete all layout config files to just split and tw
 - twtuser: 
 ### Variables
 The following variables can be added to the above files and will be automatically changed by Kai.
+<!--
 - %T: Title
 - %u: @username of who's tweeting (defined in configuration files)
+-->
 - %n: Number of the current tweet on the thread
 - %F: Total number of tweets on the thread
 
