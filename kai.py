@@ -29,6 +29,9 @@ presize = len(pre)
 post = open("config/thpost", "r").read()
 postsize = len(post)
 
+lastpost = open("config/lastpost", "r").read()
+lstpostsize = len(lastpost)
+
 
 fstsize = 280 - fstpresize - postsize
 print(fstsize)
@@ -36,12 +39,18 @@ print(fstsize)
 tweetsize = 280 - presize - postsize
 print(tweetsize)
 
+lastsize = 280 - presize - lstpostsize
+
 
 
 fsttweet = wrap(file, fstsize, break_on_hyphens=False) # drop_whitespace=False does not work. how do I allow words to be broken in half?
 print(fsttweet)
 fsttweet = fsttweet[0]
 print(fsttweet)
+
+
+twttxt = fstpre + fsttweet + post
+
 
 
 
