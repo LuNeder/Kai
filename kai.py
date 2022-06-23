@@ -56,16 +56,16 @@ twtnump = len(tweets)
 twttxt = fstpre + fsttweet + post
 
 for i in range(twtnump):
-	if i = 0:
+	if i == 0:
 		twttxt = fstpre + fsttweet + post
 		tweet =  client.create_tweet(text=twttxt)
-	elif i = len(tweets):
+	elif i == len(tweets):
 		tweeti = tweets[i]
 		
 		if len(tweeti) > lastsize:
 			lasttweets = wrap(tweeti, lastsize)
 			for i in lasttweets:
-				if i = len(lasttweets):
+				if i == len(lasttweets):
 					tweeti = lasttweets[i]
 					twttxt = pre + tweeti + lastpost
 					tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
