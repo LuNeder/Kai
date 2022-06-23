@@ -24,7 +24,7 @@ The following variables can be added to the above files and will be automaticall
 - %T: Title
 - %u: @username of who's tweeting (defined in configuration files)
 - %n: Number of the current tweet on the thread
-- %f: Total number of tweets on the thread
+- %F: Total number of tweets on the thread
 
 #
 Kai uses she/her pronouns
