@@ -58,7 +58,7 @@ print(tweets)
 if len(tweets[twtnump - 1]) > lastsize:
 	print("last twt will have to be split")
 	alasttweets = wrap(tweets[twtnump - 1], lastsize)
-	number = twtnump + alasttweets - 1
+	number = twtnump + len(alasttweets) - 1
 else:
 	print("last twt will not have to be split")
 	number = twtnump
