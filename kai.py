@@ -61,14 +61,15 @@ for i in range(twtnump):
 		tweet =  client.create_tweet(text=twttxt)
 	elif i = len(tweets):
 		tweeti = tweets[i]
-		twttxt = pre + tweeti + lastpost
-		tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
-	else:
-		tweeti = tweets[i]
 		
 		if len(tweeti) > lastsize:
-			
-		twttxt = pre + tweeti + lastpost
+			lasttweets = wrap(tweeti, lastsize)
+		else:
+			twttxt = pre + tweeti + lastpost
+			tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+	else:
+		tweeti = tweets[i]
+		twttxt = pre + tweeti + post
 		tweet = client.create_tweet(text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
 
 
