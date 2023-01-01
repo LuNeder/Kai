@@ -37,7 +37,10 @@ The following variables can be added to the above files and will be automaticall
 - %TO: Total number of tweets on the thread
   - %T can also be used, but only for threads with less than 100 tweets
 # Limitations
-- A thread with 1000 tweets or more might not come out as expected if using %nu and/or %TO on layout
+Help on solving these potential problems is super welcome
+- A thread with 1000 tweets/toots or more might not come out as expected if using %nu and/or %TO on layout
+- On twitter, links always count as 15 characters. If you add a link with less than 15 characters, something might fail. Because of that, it's recommended to use full links with Kai instead of shortened ones.
+- On Twitter, emojis always count as 2 characters. Because of this, tweets with lots of emojis may not come out as expected.
 
 #
 Kai uses she/her pronouns
