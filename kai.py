@@ -11,7 +11,7 @@ tootmaxsize = 500
 mast_url = "https://tech.lgbt"
 
 
-platforms = open("config/platform", "r").read().replace('\n', '')
+platforms = open("config/platform", "r").read().replace("\n", "")
 if "m" in platforms:
     platform_m = 1
 else:
@@ -24,29 +24,28 @@ else:
 
 # login info - twitter
 if platform_t == 1:
-    consumer_key = open("config/apikey", "r").read().replace('\n', '')
-    consumer_secret = open("config/apisecret", "r").read().replace('\n', '')
-    access_token = open("config/apitoken", "r").read().replace('\n', '')
-    access_token_secret = open(
-        "config/tokensecret", "r").read().replace('\n', '')
+    consumer_key = open("config/apikey", "r").read().replace("\n", "")
+    consumer_secret = open("config/apisecret", "r").read().replace("\n", "")
+    access_token = open("config/apitoken", "r").read().replace("\n", "")
+    access_token_secret = open("config/tokensecret", "r").read().replace("\n", "")
 
 # login info - Mastodon
 if platform_m == 1:
-    mastodon_access_token = open(
-        "config/mastaccesstoken", "r").read().replace('\n', '')
+    mastodon_access_token = open("config/mastaccesstoken", "r").read().replace("\n", "")
 
 
 # login twitter
 if platform_t == 1:
     client = tweepy.Client(
-        consumer_key=consumer_key, consumer_secret=consumer_secret,
-        access_token=access_token, access_token_secret=access_token_secret
+        consumer_key=consumer_key,
+        consumer_secret=consumer_secret,
+        access_token=access_token,
+        access_token_secret=access_token_secret,
     )
 
 # login Mastodon
 if platform_m == 1:
-    mastodon = Mastodon(access_token=mastodon_access_token,
-                        api_base_url=mast_url)
+    mastodon = Mastodon(access_token=mastodon_access_token, api_base_url=mast_url)
 
 
 file = open("tweet", "r").read()
@@ -135,8 +134,12 @@ if platform_t == 1:
             print("1st tweet now")
             tweeti = tweets[i]
             # twttxt = fstpre + fsttweet + post
-            posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                            ).replace("%TO", str(number)).replace("%T", str(number))
+            posti = (
+                post.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(number))
+                .replace("%T", str(number))
+            )
             twttxt = tweeti + posti
             tweet = client.create_tweet(text=twttxt)
             # print("1st tweet done")
@@ -151,42 +154,78 @@ if platform_t == 1:
                     if f == len(lasttweets) - 1:
                         print("final last twt now")
                         tweeti = lasttweets[f]
-                        prei = pre.replace("%nu", str(i + f + 1)).replace(
-                            "%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
-                        lastposti = lastpost.replace("%nu", str(i + f + 1)).replace(
-                            "%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
+                        prei = (
+                            pre.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(number))
+                            .replace("%T", str(number))
+                        )
+                        lastposti = (
+                            lastpost.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(number))
+                            .replace("%T", str(number))
+                        )
                         twttxt = prei + tweeti + lastposti
                         tweet = client.create_tweet(
-                            text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+                            text=twttxt, in_reply_to_tweet_id=tweet.data["id"]
+                        )
                     else:
                         print("lst twt part " + str(f) + "+1 now")
                         tweeti = lasttweets[f]
-                        prei = pre.replace("%nu", str(i + f + 1)).replace(
-                            "%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
-                        posti = post.replace("%nu", str(i + f + 1)).replace(
-                            "%n", str(i + f + 1)).replace("%TO", str(number)).replace("%T", str(number))
+                        prei = (
+                            pre.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(number))
+                            .replace("%T", str(number))
+                        )
+                        posti = (
+                            post.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(number))
+                            .replace("%T", str(number))
+                        )
                         twttxt = prei + tweeti + posti
                         tweet = client.create_tweet(
-                            text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+                            text=twttxt, in_reply_to_tweet_id=tweet.data["id"]
+                        )
             else:
                 print("no need to split")
-                prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                              ).replace("%TO", str(number)).replace("%T", str(number))
-                lastposti = lastpost.replace("%nu", str(
-                    i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
+                prei = (
+                    pre.replace("%nu", str(i + 1))
+                    .replace("%n", str(i + 1))
+                    .replace("%TO", str(number))
+                    .replace("%T", str(number))
+                )
+                lastposti = (
+                    lastpost.replace("%nu", str(i + 1))
+                    .replace("%n", str(i + 1))
+                    .replace("%TO", str(number))
+                    .replace("%T", str(number))
+                )
                 twttxt = prei + tweeti + lastposti
                 tweet = client.create_tweet(
-                    text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+                    text=twttxt, in_reply_to_tweet_id=tweet.data["id"]
+                )
         else:
             print("tweet " + str(i) + "+1 now")
             tweeti = tweets[i]
-            prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                          ).replace("%TO", str(number)).replace("%T", str(number))
-            posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                            ).replace("%TO", str(number)).replace("%T", str(number))
+            prei = (
+                pre.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(number))
+                .replace("%T", str(number))
+            )
+            posti = (
+                post.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(number))
+                .replace("%T", str(number))
+            )
             twttxt = prei + tweeti + posti
             tweet = client.create_tweet(
-                text=twttxt, in_reply_to_tweet_id=tweet.data["id"])
+                text=twttxt, in_reply_to_tweet_id=tweet.data["id"]
+            )
             # print("tweet " + str(i) + "+1 done")
 
 
@@ -201,8 +240,12 @@ if platform_m == 1:
             print("1st toot now")
             tweeti = toots[i]
             # twttxt = fstpre + fsttweet + post
-            posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                            ).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
+            posti = (
+                post.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(mastnumber))
+                .replace("%T", str(mastnumber))
+            )
             twttxt = tweeti + posti
             tweet = mastodon.status_post(status=twttxt)
             # print("1st tweet done")
@@ -217,39 +260,71 @@ if platform_m == 1:
                     if f == len(lasttweets) - 1:
                         print("final last toot now")
                         tweeti = lasttweets[f]
-                        prei = pre.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace(
-                            "%TO", str(mastnumber)).replace("%T", str(mastnumber))
-                        lastposti = lastpost.replace("%nu", str(i + f + 1)).replace("%n", str(
-                            i + f + 1)).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
+                        prei = (
+                            pre.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(mastnumber))
+                            .replace("%T", str(mastnumber))
+                        )
+                        lastposti = (
+                            lastpost.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(mastnumber))
+                            .replace("%T", str(mastnumber))
+                        )
                         twttxt = prei + tweeti + lastposti
                         tweet = mastodon.status_post(
-                            status=twttxt, in_reply_to_id=tweet["id"])
+                            status=twttxt, in_reply_to_id=tweet["id"]
+                        )
                     else:
                         print("lst toot part " + str(f) + "+1 now")
                         tweeti = lasttweets[f]
-                        prei = pre.replace("%nu", str(i + f + 1)).replace("%n", str(i + f + 1)).replace(
-                            "%TO", str(mastnumber)).replace("%T", str(mastnumber))
-                        posti = post.replace("%nu", str(i + f + 1)).replace("%n", str(
-                            i + f + 1)).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
+                        prei = (
+                            pre.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(mastnumber))
+                            .replace("%T", str(mastnumber))
+                        )
+                        posti = (
+                            post.replace("%nu", str(i + f + 1))
+                            .replace("%n", str(i + f + 1))
+                            .replace("%TO", str(mastnumber))
+                            .replace("%T", str(mastnumber))
+                        )
                         twttxt = prei + tweeti + posti
                         tweet = mastodon.status_post(
-                            status=twttxt, in_reply_to_id=tweet["id"])
+                            status=twttxt, in_reply_to_id=tweet["id"]
+                        )
             else:
                 print("no need to split")
-                prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace(
-                    "%TO", str(mastnumber)).replace("%T", str(mastnumber))
-                lastposti = lastpost.replace("%nu", str(i + 1)).replace("%n", str(
-                    i + 1)).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
+                prei = (
+                    pre.replace("%nu", str(i + 1))
+                    .replace("%n", str(i + 1))
+                    .replace("%TO", str(mastnumber))
+                    .replace("%T", str(mastnumber))
+                )
+                lastposti = (
+                    lastpost.replace("%nu", str(i + 1))
+                    .replace("%n", str(i + 1))
+                    .replace("%TO", str(mastnumber))
+                    .replace("%T", str(mastnumber))
+                )
                 twttxt = prei + tweeti + lastposti
-                tweet = mastodon.status_post(
-                    status=twttxt, in_reply_to_id=tweet["id"])
+                tweet = mastodon.status_post(status=twttxt, in_reply_to_id=tweet["id"])
         else:
             print("toot " + str(i) + "+1 now")
             tweeti = toots[i]
-            prei = pre.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                          ).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
-            posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)
-                                                            ).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
+            prei = (
+                pre.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(mastnumber))
+                .replace("%T", str(mastnumber))
+            )
+            posti = (
+                post.replace("%nu", str(i + 1))
+                .replace("%n", str(i + 1))
+                .replace("%TO", str(mastnumber))
+                .replace("%T", str(mastnumber))
+            )
             twttxt = prei + tweeti + posti
-            tweet = mastodon.status_post(
-                status=twttxt, in_reply_to_id=tweet["id"])
+            tweet = mastodon.status_post(status=twttxt, in_reply_to_id=tweet["id"])
