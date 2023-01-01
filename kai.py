@@ -130,7 +130,7 @@ if platform_m == 1:
 if platforms_t == 1:
     for i in range(twtnump):
         	if i == 0:
-            print("1st tweet now")
+            	print("1st tweet now")
         		tweeti = tweets[i]
         		#twttxt = fstpre + fsttweet + post
         		posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(number)).replace("%T", str(number))
