@@ -9,25 +9,42 @@ from mastodon import Mastodon
 
 tootmaxsize = 500
 
+
+platforms = open("config/apikey", "r").read().replace('\n','')
+if "m" in platforms:
+    platform_m = 1
+else:
+    platform_m = 0
+if "t" in platforms:
+    platform_t = 1
+else:
+    platform_t = 0
+
+
 #login info - twitter
-consumer_key = open("config/apikey", "r").read().replace('\n','')
-consumer_secret = open("config/apisecret", "r").read().replace('\n','')
-access_token = open("config/apitoken", "r").read().replace('\n','')
-access_token_secret = open("config/tokensecret", "r").read().replace('\n','')
+if platform_t == 1:
+    consumer_key = open("config/apikey", "r").read().replace('\n','')
+    consumer_secret = open("config/apisecret", "r").read().replace('\n','')
+    access_token = open("config/apitoken", "r").read().replace('\n','')
+    access_token_secret = open("config/tokensecret", "r").read().replace('\n','')
 
 #login info - Mastodon
-mastodon_access_token = open("config/mastaccesstoken", "r").read().replace('\n','')
+if platform_m == 1:
+    mastodon_access_token = open("config/mastaccesstoken", "r").read().replace('\n','')
 
 
 #login twitter
-client = tweepy.Client(
+if platform_t == 1:
+    client = tweepy.Client(
     consumer_key=consumer_key, consumer_secret=consumer_secret,
     access_token=access_token, access_token_secret=access_token_secret
 )
 
 #login Mastodon
-mastodon = Mastodon(access_token = mastodon_access_token)
+if platform_m == 1:
+    mastodon = Mastodon(access_token = mastodon_access_token)
 
+################
 
 
 file = open("tweet", "r").read()
