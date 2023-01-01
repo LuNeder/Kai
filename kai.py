@@ -5,20 +5,24 @@ import tweepy
 import os
 from textwrap import wrap
 
-#login info
+tootmaxsize = 500
+
+#login info - twitter
 consumer_key = open("config/apikey", "r").read().replace('\n','')
 consumer_secret = open("config/apisecret", "r").read().replace('\n','')
 access_token = open("config/apitoken", "r").read().replace('\n','')
 access_token_secret = open("config/tokensecret", "r").read().replace('\n','')
 
+#login info - Mastodon
 
 
-#login
+#login twitter
 client = tweepy.Client(
     consumer_key=consumer_key, consumer_secret=consumer_secret,
     access_token=access_token, access_token_secret=access_token_secret
 )
 
+#login Mastodon
 
 
 file = open("tweet", "r").read()
@@ -48,6 +52,13 @@ lastsize = 280 - presize - lstpostsize
 print(lastsize)
 
 
+
+tootsize = tootmaxsize - presize - postsize
+print(tootsize)
+
+mastlastsize = tootmaxsize - presize - lstpostsize
+print(mastlastsize)
+
 #fsttweet = wrap(file, fstsize, break_on_hyphens=False) # drop_whitespace=False does not work. how do I allow words to be broken in half?
 #print(fsttweet)
 #fsttweet = fsttweet[0]
@@ -57,6 +68,14 @@ print(lastsize)
 tweets = wrap(file, tweetsize, break_on_hyphens=False)
 twtnump = len(tweets)
 print(tweets)
+
+#divide big text in toots
+toots = wrap(file, tootsize, break_on_hyphens=False)
+tootnump = len(toots)
+print(toots)
+
+
+########## 
 
 if len(tweets[twtnump - 1]) > lastsize:
 	print("last twt will have to be split")
