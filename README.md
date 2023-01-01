@@ -1,5 +1,5 @@
 # Kai
-Kai automatically splits a big text into multiple chunks with exactly 500 characters (for Mastodon) and 280 characters (for Twitter), automatically numbering them with your layout choice, and then toots and tweets them into a mastodon and twitter thread.
+Kai automatically splits a big text into multiple chunks with exactly 500 characters (for Mastodon - configurable) and 280 characters (for Twitter), automatically numbering them with your layout choice, and then toots and tweets them into a mastodon and twitter thread.
 
 # Usage
 Write the text you want to toot and/or tweet on the "tweet" file.
