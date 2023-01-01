@@ -16,6 +16,7 @@ access_token = open("config/apitoken", "r").read().replace('\n','')
 access_token_secret = open("config/tokensecret", "r").read().replace('\n','')
 
 #login info - Mastodon
+mastodon_access_token = open("config/mastaccesstoken", "r").read().replace('\n','')
 
 
 #login twitter
@@ -25,6 +26,8 @@ client = tweepy.Client(
 )
 
 #login Mastodon
+mastodon = Mastodon(access_token = mastodon_access_token)
+
 
 
 file = open("tweet", "r").read()
