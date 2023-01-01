@@ -1,11 +1,11 @@
 # Copyright (c) Luana Neder 2022
 # Licensed under the Open Software License version 3.0
 
-import tweepy
 import os
 from textwrap import wrap
-from mastodon import Mastodon
 
+import tweepy
+from mastodon import Mastodon
 
 tootmaxsize = 500
 mast_url = "https://tech.lgbt"
