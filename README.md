@@ -25,7 +25,9 @@ As an alternative, you could delete all layout config files to just split and tw
 - twtuser: 
 -->
 ##### Mastodon:
-- mastaccesstoken: 
+- mastaccesstoken:
+- instance: link to your instancd
+- maxtootsize: max toot size in characters
 ### Variables
 The following variables can be added to the above files and will be automatically changed by Kai.
 <!--
