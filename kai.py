@@ -7,8 +7,8 @@ from textwrap import wrap
 from mastodon import Mastodon
 
 
-tootmaxsize = 500
-mast_url = "https://tech.lgbt"
+tootmaxsize = open("config/maxtootsize", "r").read().replace('\n','')
+mast_url = open("config/instance", "r").read().replace('\n','')
 
 
 platforms = open("config/platform", "r").read().replace('\n','')
