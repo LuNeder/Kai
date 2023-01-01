@@ -8,9 +8,10 @@ from mastodon import Mastodon
 
 
 tootmaxsize = 500
+mast-url = "https://tech.lgbt"
 
 
-platforms = open("config/apikey", "r").read().replace('\n','')
+platform_ = open("config/platform", "r").read().replace('\n','')
 if "m" in platforms:
 	platform_m = 1
 else:
@@ -42,7 +43,7 @@ if platform_t == 1:
 
 #login Mastodon
 if platform_m == 1:
-	mastodon = Mastodon(access_token = mastodon_access_token)
+	mastodon = Mastodon(access_token = mastodon_access_token, api_base_url=mast_url)
 
 
 
@@ -127,7 +128,7 @@ if platform_m == 1:
 #twttxt = fstpre + fsttweet + post
 
 # Twitter - final steps and post
-if platforms_t == 1:
+if platform_t == 1:
 	for i in range(twtnump):
 			if i == 0:
 				print("1st tweet now")
@@ -180,10 +181,10 @@ if platforms_t == 1:
 
 
 # Mastodon - final steps and post
-if platforms_m == 1:
+if platform_m == 1:
 	for i in range(tootnump):
 			if i == 0:
-			print("1st toot now")
+				print("1st toot now")
 				tweeti = toots[i]
 				#twttxt = fstpre + fsttweet + post
 				posti = post.replace("%nu", str(i + 1)).replace("%n", str(i + 1)).replace("%TO", str(mastnumber)).replace("%T", str(mastnumber))
