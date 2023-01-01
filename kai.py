@@ -44,7 +44,6 @@ if platform_t == 1:
 if platform_m == 1:
     mastodon = Mastodon(access_token = mastodon_access_token)
 
-################
 
 
 file = open("tweet", "r").read()
@@ -87,28 +86,43 @@ print(mastlastsize)
 #print(fsttweet)
 
 #divide big text in tweets
-tweets = wrap(file, tweetsize, break_on_hyphens=False)
-twtnump = len(tweets)
-print(tweets)
+if platform_t == 1:
+    tweets = wrap(file, tweetsize, break_on_hyphens=False)
+    twtnump = len(tweets)
+    print(tweets)
 
 #divide big text in toots
-toots = wrap(file, tootsize, break_on_hyphens=False)
-tootnump = len(toots)
-print(toots)
+if platform_m == 1:
+    toots = wrap(file, tootsize, break_on_hyphens=False)
+    tootnump = len(toots)
+    print(toots)
 
-
-########## 
-
-if len(tweets[twtnump - 1]) > lastsize:
-	print("last twt will have to be split")
-	alasttweets = wrap(tweets[twtnump - 1], lastsize)
-	number = twtnump + len(alasttweets) - 1
-else:
-	print("last twt will not have to be split")
-	number = twtnump
+#Twitter
+if platform_t == 1:
+    if len(tweets[twtnump - 1]) > lastsize:
+        	print("last twt will have to be split")
+        	alasttweets = wrap(tweets[twtnump - 1], lastsize)
+        	number = twtnump + len(alasttweets) - 1
+    else:
+        	print("last twt will not have to be split")
+        	number = twtnump
 	
-print("there will be " + str(number) + " tweets")
+    print("there will be " + str(number) + " tweets")
 
+#Mastodon
+if platform_m == 1:
+    if len(toots[tootnump - 1]) > mastlastsize:
+        	print("last toot will have to be split")
+        	alasttoots = wrap(toots[tootnump - 1], mastlastsize)
+        	mastnumber = tootnump + len(alasttoots) - 1
+    else:
+        	print("last toot will not have to be split")
+        	mastnumber = tootnump
+	
+    print("there will be " + str(mastnumber) + " toots")
+
+
+############################
 
 #twttxt = fstpre + fsttweet + post
 
