@@ -4,6 +4,8 @@
 import tweepy
 import os
 from textwrap import wrap
+from mastodon import Mastodon
+
 
 tootmaxsize = 500
 
