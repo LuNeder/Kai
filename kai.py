@@ -8,10 +8,10 @@ from mastodon import Mastodon
 
 
 tootmaxsize = 500
-mast-url = "https://tech.lgbt"
+mast_url = "https://tech.lgbt"
 
 
-platform_ = open("config/platform", "r").read().replace('\n','')
+platforms = open("config/platform", "r").read().replace('\n','')
 if "m" in platforms:
 	platform_m = 1
 else:
